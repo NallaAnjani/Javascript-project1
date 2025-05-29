@@ -1,0 +1,337 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Search 🎬</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #dbeafe, #f0f9ff);
+      
+      /* flex-direction: column;
+      align-items: center; */
+      /* min-height: 100vh; */
+    }
+
+    header {
+      /* padding: 30px 20px 10px; */
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px;
+      font-size: 2.5rem;
+      color: #7948bd;
+    }
+
+    #search {
+      padding: 12px 15px;
+      width: 60%;
+      max-width: 400px;
+      border: 2px solid #0284c7;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0369a1;
+    }
+
+    #movie-container {
+      margin-top: 30px;
+      padding: 20px;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    .movie {
+      background-color: #a344eb20;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+      
+    }
+
+    .movie:hover {
+      transform: scale(1.02);
+    }
+
+    .movie img {
+      width: 30%;
+      max-width: 250px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    .movie h2 {
+      margin: 10px 0;
+      color: #1e293b;
+    }
+
+    .movie p {
+      margin: 5px 0;
+      color: #334155;
+      font-size: 1rem;
+    }
+    /* Navbar Styling - Full Width */
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  
+}
+
+/* Centered content inside full-width navbar */
+.nav-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo styling */
+.logo {
+    color: #facc15;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+/* Profile section */
+.profile-menu {
+    position: relative;
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+/* Dropdown styling */
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .nav-content {
+   
+    align-items: flex-start;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .profile-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  #search {
+    width: 80%;
+  }
+
+  button {
+    margin-top: 10px;
+    width: 80%;
+  }
+
+  .movie img {
+    width: 50%;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .profile-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    margin: 10px;
+  }
+
+  #search {
+    width: 90%;
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    width: 90%;
+  }
+
+  .movie {
+    padding: 15px;
+  }
+
+  .movie img {
+    width: 70%;
+  }
+
+  .movie h2 {
+    font-size: 1.2rem;
+  }
+
+  .movie p {
+    font-size: 0.9rem;
+  }
+
+  .dropdown {
+    right: 10px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+  <div class="nav-content">
+    <div class="logo">🎬 MovieMate</div>
+    <div class="profile-menu">
+      <img src="https://i.pinimg.com/564x/34/9e/bd/349ebdfc97c4d72d92407a938383fa2b.jpg" class="profile-icon" onclick="toggleDropdown()" alt="Profile">
+      
+      <div class="dropdown" id="dropdown">
+        <a href="#">Profile</a>
+        <a href="#" onclick="logout()">Logout</a>
+        
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+    <h1>🎞️.....Movie Search....🍿</h1>
+    <input type="text" id="search" placeholder="Enter movie name...">
+    <button onclick="searchMovie()">Search</button>
+  </header>
+
+  <div id="movie-container"></div>
+
+  <script>
+    const API_KEY = 'f79c6b31';
+    const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}&t=`;
+
+    const searchInput = document.getElementById('search');
+    const movieContainer = document.getElementById('movie-container');
+
+    async function searchMovie() {
+      const movieName = searchInput.value.trim();
+      if (!movieName) {
+        return alert('Please enter a movie name');
+      }
+
+      const res = await fetch(API_URL + movieName);
+      const data = await res.json();
+      console.log(data);
+
+      if (data.Response === "False") {
+        movieContainer.innerHTML = `<h2 style="color: crimson;">Movie not found 😞</h2>`;
+      } else {
+        displayMovie(data);
+      }
+    }
+
+    function displayMovie(movie) {
+      movieContainer.innerHTML = `
+        <div class="movie">
+          <img src="${movie.Poster}" alt="${movie.Title}">
+          <div class="movie-details">
+            <h2>${movie.Title} (${movie.Year})</h2>
+            <p>⭐ <strong>IMDB Rating:</strong> ${movie.imdbRating}</p>
+            <p>🎭 <strong>Genre:</strong> ${movie.Genre}</p>
+            <p>🎬 <strong>Director:</strong> ${movie.Director}</p>
+            <p>👨‍🎤 <strong>Actors:</strong> ${movie.Actors}</p>
+            <p>📝 <strong>Plot:</strong> ${movie.Plot}</p>
+          </div>
+        </div>
+      `;
+    }
+    function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+function logout() {
+    window.location.href = 'login.html';
+}
+
+// Hide dropdown when clicking outside
+document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('dropdown');
+    const profile = document.querySelector('.profile-icon');
+    if (!dropdown.contains(e.target) && !profile.contains(e.target)) {
+        dropdown.style.display = 'none';
+    }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+      
+        background-image: url('https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        }
+        .container{
+            margin-top: 4%;
+            margin-left: 6%;
+            background-color: rgba(61, 12, 96, 0.729);
+            width:28%;
+            height:75vh;
+            border-radius: 20px;
+            font-weight: bold;
+            
+        }
+        .gradient-text {
+  background: linear-gradient(90deg, #1253eb, #e223a2,  #10c89d,#d94b6f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 5s linear infinite;
+  font-family:'Franklin Gothic Medium';
+  font-size:40px;
+  padding-left: 5%;
+  
+}
+.btn{
+    width: 80%;
+    height: 7vh;
+    border-radius: 20px;
+    background-color: rgb(75, 207, 75);
+    margin-top: 5%;
+    margin-left: 8%;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+    height: auto;
+    margin: 10% auto;
+    padding: 20px;
+  }
+
+  .gradient-text {
+    font-size: 30px;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .btn {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 18px;
+  }
+
+  .container h3 {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .container p {
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+  }
+}
+
+@media (max-width: 480px) {
+  .gradient-text {
+    font-size: 24px;
+  }
+
+  .container h3 {
+    font-size: 20px;
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 6vh;
+  }
+
+  .container {
+    border-radius: 10px;
+  }
+}
+
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    
+        <h1 class="gradient-text" style="padding-top: 40px;">🎥 Movie Poster</h1>
+        <p style="color: white;font-family:'Franklin Gothic Medium';padding-left: 7%;padding-right: 7%;">A movie poster is a picture that shows important details about a movie. It usually has the movie's name, main actors, and a picture that gives an idea of what the movie is about. Movie posters help people get interested in the film by showing what kind of story it tells. They are made to look exciting and eye-catching. In this app, the movie poster helps you quickly understand what the movie looks like and what it might be about.</p>
+        <button class="btn" onclick="location.href='login.html'">Login</button><br>
+        <button class="btn" onclick="location.href='signup.html'">Sign Up</button>
+        <button class="btn" onclick="guestLogin()" style="background-color: brown;">Guest login</button>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAdpXQQJgdihjX6TZMQIpZF9pLgTzlCcoU",
+        authDomain: "sportify-a7cb3.firebaseapp.com",
+        projectId: "sportify-a7cb3",
+        storageBucket: "sportify-a7cb3.appspot.com",
+        messagingSenderId: "629172380320",
+        appId: "1:629172380320:web:70cbb91c9c66ea32d2dfc5"
+      };
+  
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      
+      function guestLogin() {
+      auth.signInAnonymously()
+        .then(() => window.location.href = "animation.html")
+        .catch((error) => alert("Guest login failed: " + error.message));
+    }
+
+  </script>
+    
+</body>
+</html>

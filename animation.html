@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+  background-color:#0b1320;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.circle-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 5px solid #ff007f;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: glow 2s infinite ease-in-out;
+  box-shadow: 0 0 20px #ff007f;
+  overflow: hidden;
+}
+
+.music-bar {
+  width: 6px;
+  background-color: white;
+  margin: 0 3px;
+  animation: bounce 1s infinite ease-in-out;
+  border-radius: 3px;
+}
+
+.bar1 { height: 30px; animation-delay: 0s; }
+.bar2 { height: 40px; animation-delay: 0.1s; }
+.bar3 { height: 50px; animation-delay: 0.2s; }
+.bar4 { height: 40px; animation-delay: 0.3s; }
+.bar5 { height: 30px; animation-delay: 0.4s; }
+
+@media (max-width: 600px) {
+  .circle-container {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+
+  .music-bar {
+    width: 4px;
+    margin: 0 2px;
+  }
+
+  .bar1 { height: 20px; }
+  .bar2 { height: 25px; }
+  .bar3 { height: 30px; }
+  .bar4 { height: 25px; }
+  .bar5 { height: 20px; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1.5); }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 30px #ff007f;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff66a3, 0 0 40px #ff3399, 0 0 60px #ff1a8c;
+  }
+}
+
+  </style>
+</head>
+<body>
+ <div class="circle-container">
+  <div class="music-bar bar1"></div>
+  <div class="music-bar bar2"></div>
+  <div class="music-bar bar3"></div>
+  <div class="music-bar bar4"></div>
+  <div class="music-bar bar5"></div>
+</div>
+
+<script>
+  setTimeout(() => {
+    window.location.href = "main.html";
+  }, 2000); // 3000 milliseconds = 3 seconds
+</script>
+
+  
+</body>
+</html>
